@@ -228,8 +228,8 @@ export default {
         "phone": "6121001000",
         "membershipDate": null,
         "isLibrarian": false
-      }
-      this.cart = [
+      }*/
+      /*this.cart = [
         {
           "bookID": 101,
           "isbn": "978-0-06-223063-8",
