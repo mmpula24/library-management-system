@@ -145,7 +145,7 @@
           >
             <template slot="table-row" slot-scope="props">
         <span v-if="props.column.field == 'removeFromCart'">
-          <mdb-btn outline="danger" size="sm" class="px-2" @click.native="removeFromCart(props.row)" title="Remove"><mdb-icon icon="minus"></mdb-icon></mdb-btn>
+          <mdb-btn outline="danger" size="sm" class="px-2" @click.native="removeFromCart(props.row)" title="Remove"><mdb-icon icon="minus-square"></mdb-icon></mdb-btn>
     </span>
               <span v-else>
       {{props.formattedRow[props.column.field]}}
@@ -199,6 +199,7 @@ export default {
         {label: 'Genre', field: 'genre'},
         {label: 'Date Added', field: 'dateAdded'},
         {label: 'Date Modified', field: 'dateModified'},
+        {label: '', field: 'removeFromCart'},
       ],
       headers: {
         'Access-Control-Allow-Origin': 'http://localhost:8081',
@@ -227,7 +228,29 @@ export default {
         "phone": "6121001000",
         "membershipDate": null,
         "isLibrarian": false
-      }*/
+      }
+      this.cart = [
+        {
+          "bookID": 101,
+          "isbn": "978-0-06-223063-8",
+          "title": "The Confidence Code",
+          "author": "Katty Kay",
+          "publisher": "HarperCollinsPublishers",
+          "genre": "Womenomics",
+          "dateAdded": "2001-10-10T05:00:00.000+00:00",
+          "dateModified": "2005-10-10T05:00:00.000+00:00"
+        },
+        {
+          "bookID": 102,
+          "isbn": "978-0-06-223063-0",
+          "title": "Every Exquisite Thing",
+          "author": "Matthew Quick",
+          "publisher": "Little, Brown and Company",
+          "genre": "Fiction",
+          "dateAdded": "2002-08-01T05:00:00.000+00:00",
+          "dateModified": "2005-10-08T05:00:00.000+00:00"
+        }
+      ]*/
       if(this.userInfo.userID) {
         if(this.userInfo.isLibrarian) {
           this.$router.push({path: '/admin'});

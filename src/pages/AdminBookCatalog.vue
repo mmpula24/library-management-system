@@ -169,7 +169,7 @@ export default {
       let deleteResponse;
       await axios
           .delete('http://localhost:8080/books/' + this.bookToDelete.bookID, {headers: this.headers})
-          .then(response => (deleteResponse = response.data))
+          .then(response => (deleteResponse = response))
       if(deleteResponse.status === 200) {
         this.$notify({
           group: 'message',

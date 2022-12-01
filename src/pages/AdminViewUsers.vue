@@ -254,7 +254,7 @@ export default {
       let userDeleted;
       await axios
           .delete('http://localhost:8080/users/' + this.userToDelete.userID, {headers: this.headers})
-          .then(response => (userDeleted = response.data))
+          .then(response => (userDeleted = response))
       if(userDeleted.status === 200) {
         this.$notify({
           group: 'message',

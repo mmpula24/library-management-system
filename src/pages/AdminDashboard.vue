@@ -127,6 +127,8 @@ export default {
   },
   methods: {
     async getBooksCheckedOut() {
+      this.booksCheckedOut = [];
+      this.booksOverdue = [];
       await axios
           .get('http://localhost:8080/rentals', {headers: this.headers})
           .then(response => (this.books = response.data));
@@ -167,8 +169,8 @@ export default {
       let bookReturned;
       await axios
           .delete('http://localhost:8080/rentals/' + book.rentalID, {headers: this.headers})
-          .then(response => (bookReturned = response.data));
-      if(bookReturned) {
+          .then(response => (bookReturned = response));
+      if(bookReturned.status === 200) {
         this.$notify({
           group: 'message',
           title: 'Success!',
