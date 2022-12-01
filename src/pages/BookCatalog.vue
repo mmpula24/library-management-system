@@ -5,6 +5,10 @@
         :columns="columns"
         :rows="rows"
         :search-options="{enabled: true}"
+        :pagination-options="{
+          enabled: true,
+          mode: 'records',
+        }"
         class="pt-4"
         style="margin-top: 80px !important"
     >

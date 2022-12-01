@@ -227,7 +227,7 @@ export default {
         "zipcode": 55113,
         "phone": "6121001000",
         "membershipDate": null,
-        "isLibrarian": false
+        "isLibrarian": true
       }*/
       /*this.cart = [
         {

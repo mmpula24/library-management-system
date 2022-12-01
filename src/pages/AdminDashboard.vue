@@ -72,6 +72,10 @@
             :columns="detailedTableColumns"
             :rows="detailedTableRows"
             :search-options="{enabled: true}"
+            :pagination-options="{
+              enabled: true,
+              mode: 'records',
+            }"
             class="pt-4"
         >
           <template slot="table-row" slot-scope="props">
