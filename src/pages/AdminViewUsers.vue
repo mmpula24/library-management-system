@@ -1,27 +1,27 @@
 <template>
   <mdb-container class="mt-0 pt-0 mb-0" fluid style="height: 100vh">
     <vue-good-table
-        :isLoading="loading"
-        :columns="columns"
-        :rows="rows"
-        :search-options="{enabled: true}"
-        :pagination-options="{
-          enabled: true,
-          mode: 'records',
-        }"
-        class="pt-4"
-        style="margin-top: 80px !important"
+      :isLoading="loading"
+      :columns="columns"
+      :rows="rows"
+      :search-options="{enabled: true}"
+      :pagination-options="{
+        enabled: true,
+        mode: 'records',
+      }"
+      class="pt-4"
+      style="margin-top: 80px !important"
     >
       <template slot="table-row" slot-scope="props">
         <span v-if="props.column.field == 'update'">
           <mdb-btn outline="amber" size="sm" class="px-2" @click.native="updateUserModal(props.row)" title="Update User"><mdb-icon icon="edit"></mdb-icon></mdb-btn>
-    </span>
+        </span>
         <span v-if="props.column.field == 'delete'">
           <mdb-btn outline="danger" size="sm" class="px-2" @click.native="deleteUserModal(props.row)" title="Delete User"><mdb-icon icon="trash"></mdb-icon></mdb-btn>
-    </span>
+        </span>
         <span v-else>
-      {{props.formattedRow[props.column.field]}}
-    </span>
+          {{props.formattedRow[props.column.field]}}
+        </span>
       </template>
     </vue-good-table>
     <mdb-modal v-if="userToUpdate" :show="showUpdateModal" @close="showUpdateModal = false" class="black-text" size="lg" centered>
@@ -101,10 +101,8 @@
       </mdb-modal-body>
       <mdb-modal-footer>
         <mdb-btn
-            color="amber"
-            v-if="userToUpdate.firstName && userToUpdate.lastName && userToUpdate.streetAddress && userToUpdate.phone && userToUpdate.city && userToUpdate.state && userToUpdate.zipcode" @click.native="updateUser">Update User
+            color="amber" @click.native="updateUser">Update User
         </mdb-btn>
-        <mdb-btn v-else disabled color="amber">Update User</mdb-btn>
       </mdb-modal-footer>
     </mdb-modal>
     <mdb-modal v-if="userToDelete" :show="showDeleteModal" @close="showDeleteModal = false" class="black-text" centered>
@@ -164,32 +162,6 @@ export default {
       await axios
           .get('http://localhost:8080/users', {headers: this.headers})
           .then(response => (this.rows = response.data))
-      /*this.rows = [
-        {
-          "userID": 1,
-          "firstName": "Mitch",
-          "lastName": "Johnson",
-          "streetAddress": "220 Mapple Street",
-          "city": "Oakdale",
-          "state": "MN",
-          "zipcode": 55113,
-          "phone": "6121001000",
-          "membershipDate": null,
-          "isLibrarian": false
-        },
-        {
-          "userID": 2,
-          "firstName": "Elana",
-          "lastName": "Fridley",
-          "streetAddress": "12th Street S",
-          "city": "Oakdale",
-          "state": "MN",
-          "zipcode": 55113,
-          "phone": "6511001000",
-          "membershipDate": "2001-10-10T05:00:00.000+00:00",
-          "isLibrarian": false
-        }
-      ]*/
       for (let i = 0; i < this.rows.length; i++) {
         if(this.rows[i].isLibrarian) {
           this.rows[i].userType = 'Librarian';

@@ -68,23 +68,23 @@
       </mdb-modal-header>
       <mdb-modal-body>
         <vue-good-table
-            :isLoading="loading"
-            :columns="detailedTableColumns"
-            :rows="detailedTableRows"
-            :search-options="{enabled: true}"
-            :pagination-options="{
-              enabled: true,
-              mode: 'records',
-            }"
-            class="pt-4"
+          :isLoading="loading"
+          :columns="detailedTableColumns"
+          :rows="detailedTableRows"
+          :search-options="{enabled: true}"
+          :pagination-options="{
+            enabled: true,
+            mode: 'records',
+          }"
+          class="pt-4"
         >
           <template slot="table-row" slot-scope="props">
-        <span v-if="props.column.field == 'returnBook'">
-          <mdb-btn color="amber" size="sm" @click.native="returnBook(props.row)" title="Return Book"><mdb-icon icon="minus-square"></mdb-icon></mdb-btn>
-    </span>
+            <span v-if="props.column.field == 'returnBook'">
+              <mdb-btn color="amber" size="sm" @click.native="returnBook(props.row)" title="Return Book"><mdb-icon icon="minus-square"></mdb-icon></mdb-btn>
+            </span>
             <span v-else>
-      {{props.formattedRow[props.column.field]}}
-    </span>
+              {{props.formattedRow[props.column.field]}}
+            </span>
           </template>
         </vue-good-table>
       </mdb-modal-body>

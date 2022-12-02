@@ -68,15 +68,15 @@
       </mdb-modal-header>
       <mdb-modal-body>
         <vue-good-table
-            :isLoading="loading"
-            :columns="detailedTableColumns"
-            :rows="detailedTableRows"
-            :search-options="{enabled: true}"
-            :pagination-options="{
-              enabled: true,
-              mode: 'records',
-            }"
-            class="pt-4"
+          :isLoading="loading"
+          :columns="detailedTableColumns"
+          :rows="detailedTableRows"
+          :search-options="{enabled: true}"
+          :pagination-options="{
+            enabled: true,
+            mode: 'records',
+          }"
+          class="pt-4"
         >
         </vue-good-table>
       </mdb-modal-body>
@@ -127,22 +127,6 @@ export default {
       await axios
           .get('http://localhost:8080/rentals/users/' + this.userInfo.userID, {headers: this.headers})
           .then(response => (this.books = response.data));
-      /*this.books = [
-        {
-          "rentalID": 100,
-          "bookID": 101,
-          "userid": 2,
-          "checkoutDate": "2022-11-10",
-          "scheduledReturnDate": "2022-11-25"
-        },
-        {
-          "rentalID": 101,
-          "bookID": 102,
-          "userid": 2,
-          "checkoutDate": "2022-11-11",
-          "scheduledReturnDate": "2022-11-25"
-        }
-      ]*/
       for(let i = 0; i < this.books.length; i++) {
         let book;
         await axios

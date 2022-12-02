@@ -147,6 +147,16 @@ export default {
           text: 'User has been registered!',
           type: 'success'
         });
+        this.firstName = '',
+        this.lastName = '',
+        this.username = '',
+        this.password = '',
+        this.address = '',
+        this.city = '',
+        this.state = '',
+        this.zip = '',
+        this.phone = '',
+        this.email = ''
       }
       else {
         this.$notify({

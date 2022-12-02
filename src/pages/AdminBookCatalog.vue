@@ -2,26 +2,26 @@
   <mdb-container class="amber-text" fluid style="height: 100vh">
     <mdb-btn style="margin-top: 80px !important" color="amber" @click.native="showAddBookModal = true">Add Book</mdb-btn>
     <vue-good-table
-        :isLoading="loading"
-        :columns="columns"
-        :rows="rows"
-        :search-options="{enabled: true}"
-        :pagination-options="{
-          enabled: true,
-          mode: 'records',
-        }"
-        class="pt-4"
+      :isLoading="loading"
+      :columns="columns"
+      :rows="rows"
+      :search-options="{enabled: true}"
+      :pagination-options="{
+        enabled: true,
+        mode: 'records',
+      }"
+      class="pt-4"
     >
       <template slot="table-row" slot-scope="props">
         <span v-if="props.column.field == 'checkOut'">
           <mdb-btn outline="amber" size="sm" class="px-2" @click.native="showCheckOutModal(props.row)" title="Check Out Book"><mdb-icon icon="book-open"></mdb-icon></mdb-btn>
-    </span>
+        </span>
         <span v-if="props.column.field == 'delete'">
           <mdb-btn outline="danger" size="sm" class="px-2" @click.native="deleteModal(props.row)" title="Delete Book"><mdb-icon icon="trash"></mdb-icon></mdb-btn>
-    </span>
+        </span>
         <span v-else>
-      {{props.formattedRow[props.column.field]}}
-    </span>
+          {{props.formattedRow[props.column.field]}}
+        </span>
       </template>
     </vue-good-table>
     <mdb-modal v-if="selectedBook" :show="showModal" @close="showModal = false" class="black-text" centered>
@@ -264,28 +264,6 @@ export default {
       await axios
           .get('http://localhost:8080/books', {headers: this.headers})
           .then(response => (this.rows = response.data))
-      /*this.rows = [
-        {
-          "bookID": 101,
-          "isbn": "978-0-06-223063-8",
-          "title": "The Confidence Code",
-          "author": "Katty Kay",
-          "publisher": "HarperCollinsPublishers",
-          "genre": "Womenomics",
-          "dateAdded": "2001-10-10T05:00:00.000+00:00",
-          "dateModified": "2005-10-10T05:00:00.000+00:00"
-        },
-        {
-          "bookID": 102,
-          "isbn": "978-0-06-223063-0",
-          "title": "Every Exquisite Thing",
-          "author": "Matthew Quick",
-          "publisher": "Little, Brown and Company",
-          "genre": "Fiction",
-          "dateAdded": "2002-08-01T05:00:00.000+00:00",
-          "dateModified": "2005-10-08T05:00:00.000+00:00"
-        }
-      ]*/
       for(let i=0; i < this.rows.length; i++) {
         if(this.rows[i].dateAdded) {
           this.rows[i].dateAdded = moment(this.rows[i].dateAdded).format("MM/DD/YYYY");
